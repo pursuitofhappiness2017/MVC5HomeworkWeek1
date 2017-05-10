@@ -169,9 +169,11 @@
     <Content Include="Views\客戶銀行資訊\Details.cshtml" />
     <Content Include="Views\客戶銀行資訊\Edit.cshtml" />
     <Content Include="Views\客戶銀行資訊\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\客戶聯絡人Controller.cs" />
     <Compile Include="Controllers\客戶資料Controller.cs" />
     <Compile Include="Controllers\客戶銀行資訊Controller.cs" />
@@ -196,6 +198,7 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Clients.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\ClientSummaryViewModel.cs" />
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>Clients.tt</DependentUpon>
     </Compile>
