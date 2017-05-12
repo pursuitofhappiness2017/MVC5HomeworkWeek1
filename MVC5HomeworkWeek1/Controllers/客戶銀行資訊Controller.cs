@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5HomeworkWeek1.Models;
+using System.Data.Entity.Validation;
 
 namespace MVC5HomeworkWeek1.Controllers
 {
@@ -18,7 +19,7 @@ namespace MVC5HomeworkWeek1.Controllers
         public ActionResult Index()
         {
             var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
-            return View(客戶銀行資訊.ToList());
+            return View(客戶銀行資訊.Where(x => x.IsDeleted == false).ToList());
         }
 
         // GET: 客戶銀行資訊/Details/5
@@ -115,8 +116,19 @@ namespace MVC5HomeworkWeek1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶銀行資訊 客戶銀行資訊 = db.客戶銀行資訊.Find(id);
-            db.客戶銀行資訊.Remove(客戶銀行資訊);
-            db.SaveChanges();
+
+            客戶銀行資訊.IsDeleted = true;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+                throw ex;
+            }
+
             return RedirectToAction("Index");
         }
 

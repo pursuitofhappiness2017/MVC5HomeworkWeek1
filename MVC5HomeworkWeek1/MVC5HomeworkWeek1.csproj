@@ -209,6 +209,7 @@
     <Compile Include="Models\sysdiagrams.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ValidationAttributes\驗證手機的電話格式Attribute.cs" />
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>Clients.tt</DependentUpon>
     </Compile>

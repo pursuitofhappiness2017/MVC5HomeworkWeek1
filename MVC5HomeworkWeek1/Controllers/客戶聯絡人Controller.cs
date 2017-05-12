@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5HomeworkWeek1.Models;
+using System.Data.Entity.Validation;
 
 namespace MVC5HomeworkWeek1.Controllers
 {
@@ -115,8 +116,18 @@ namespace MVC5HomeworkWeek1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            db.客戶聯絡人.Remove(客戶聯絡人);
-            db.SaveChanges();
+
+            客戶聯絡人.IsDeleted = true;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                throw ex;
+            }
+
             return RedirectToAction("Index");
         }
 
